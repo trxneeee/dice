@@ -1,0 +1,209 @@
+@keyframes shake-then-fade {
+  0% {
+    transform: translate(0, 0) rotate(0);
+    background-color: grey;
+  }
+  10% {
+    transform: translate(-3px, -3px) rotate(-2deg);
+  }
+  20% {
+    transform: translate(3px, 3px) rotate(2deg);
+  }
+  30% {
+    transform: translate(-2px, 2px) rotate(-1deg);
+  }
+  40% {
+    transform: translate(2px, -2px) rotate(1deg);
+  }
+  50% {
+    transform: translate(0, 0) rotate(0deg);
+    background-color: white;
+  }
+  100% {
+    background-color: var(--final-color);
+  }
+}
+
+.app {
+  text-align: center;
+  padding: 2rem 1rem;
+  max-width: 960px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+input[type="number"] {
+  padding: 0.5rem;
+  width: 100px;
+  font-size: 1rem;
+  border: 2px solid #6200ee;
+  border-radius: 8px;
+  text-align: center;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #6200ee;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+button:hover:not(:disabled) {
+  background-color: #4b00c4;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* DICE AREA WRAPPER */
+.dice-wrapper {
+  background-color: #000;
+  padding: 2rem;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.dice-container {
+  display: flex;
+  gap: 1rem;
+}
+
+
+/* SINGLE DICE */
+.die {
+  width: 80px;
+  height: 80px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 12px;
+  border: 4px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+  background-color: white;
+  animation: shake-then-fade 3s ease-out forwards;
+}
+
+/* DOT IN THE CENTER */
+.die::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* COLOR FILTER TAGS */
+.color-filters {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Responsive Typography */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  input[type="number"] {
+    width: 80px;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+
+  .die {
+    font-size: 0.9rem;
+    width: 70px;
+    height: 70px;
+  }
+
+  .die::before {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.dice-settings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dice-toggle {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  font-weight: bold;
+  color: white;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.dice-toggle:hover {
+  transform: scale(1.05);
+}
+
+.dice-toggle.excluded {
+  opacity: 0.6;
+  filter: grayscale(100%);
+}
+
+.xmark {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  color: white;
+  pointer-events: none;
+}
+
+/* Optional: Add actual background colors */
+.red    { background-color: red; }
+.orange { background-color: orange; }
+.yellow { background-color: gold; color: #333; }
+.green  { background-color: green; }
+.blue   { background-color: blue; }
+.purple { background-color: purple; }
+
