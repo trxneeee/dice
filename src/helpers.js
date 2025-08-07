@@ -1,28 +1,30 @@
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzDLjcWrGyoeDqzU-TV5YTvBi54Td-l_VdrluwqbhheNR9zY1La3lCyYQ7GX343hbYw/exec';
+const API_URL = 'http://192.168.100.24:5000'; // Change this to your Express server's LAN IP
 
-// Load enabled colors from Google Sheets
+// Load enabled colors from local CSV
 export async function loadEnabledColors() {
   try {
-    const res = await fetch(`${WEB_APP_URL}?action=get_names`);
-    const data = await res.json();
-    return data.names.map(item => item.name); // Make sure this matches backend response
+    const res = await fetch(`${API_URL}/colors`);
+    const data = await res.json(); // Expected format: { colors: ["red", "blue", ...] }
+    return data.colors;
   } catch (err) {
-    console.error('Failed to load colors from sheet', err);
+    console.error('Failed to load colors from CSV', err);
     return [];
   }
 }
-// Save enabled colors to Google Sheets
-// ✅ New improved version
+
+// Save enabled colors to local CSV
 export async function saveEnabledColors(colors) {
   try {
-    const params = new URLSearchParams({
-      action: 'insert_names_batch', // <-- add new handler in GAS
-      names: JSON.stringify(colors),
+    const res = await fetch(`${API_URL}/colors`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ colors }),
     });
-    await fetch(`${WEB_APP_URL}?${params.toString()}`);
+
+    if (!res.ok) throw new Error('Non-OK response');
     return true;
   } catch (err) {
-    console.error('Failed to save colors to sheet', err);
+    console.error('Failed to save colors to CSV', err);
     return false;
   }
 }
