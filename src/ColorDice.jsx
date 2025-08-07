@@ -63,7 +63,7 @@ const rollDice = async () => {
     setRolling(false);
   }, 500);
 
-  await fetch('http://192.168.100.24:5000/colors', {
+  await fetch('https://dice-5dak.onrender.com/colors', {
     method: 'DELETE',
   });
 };

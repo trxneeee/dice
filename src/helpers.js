@@ -1,4 +1,4 @@
-const API_URL = 'http://192.168.100.24:5000'; // Change this to your Express server's LAN IP
+const API_URL = 'https://dice-5dak.onrender.com'; // Change this to your Express server's LAN IP
 
 // Load enabled colors from local CSV
 export async function loadEnabledColors() {
