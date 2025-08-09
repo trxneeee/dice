@@ -6,7 +6,7 @@ html, body {
     line-height: 1.5em;
     border: none;
     box-sizing: border-box;
-    background: #08f radial-gradient(#f1f9ff, #08f);
+    background: #08f radial-gradient(#08f, #08f);
     color: #fff;
     background-repeat: no-repeat;
     background-size: 100% 100%;

@@ -17,13 +17,59 @@
   100% { background-color: var(--final-color); } /* or dynamic via React */
 }
 
-.app {
-  text-align: center;
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.app{
+  width:auto;
+}
+.light{
+    text-size-adjust: 100%;
+    font-family: "Marvin", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #fff;
+    visibility: visible;
+    position: absolute;
+    background-image: url("https://www.online-dice.com/images/light.png");
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    width: 100%;
+    height: 100%;
+}
+option{
+      text-size-adjust: 100%;
+    visibility: visible;
+    font-size: 18px;
+    font-family: "Luckiest Guy", Arial, sans-serif!important;
+}
+.inner{
+    text-align: center;
   padding: 2rem 1rem;
   max-width: 960px;
   margin: auto;
 }
+.page-content {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
 
+.page-content.fade-out {
+  opacity: 0;
+}
 h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
@@ -69,16 +115,26 @@ button:disabled {
 
 /* DICE AREA WRAPPER */
 .dice-wrapper {
-    border: 5px solid white;
-    background-color: #5ba7ff;
-    padding: 20px;
-    display: flex
-;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 20px;
+    text-size-adjust: 100%;
+    font-family: "Marvin", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #fff;
+    visibility: visible;
     position: relative;
+    box-sizing: border-box;
+    vertical-align: top;
+    -webkit-border-radius: 20px;
+    border: 5px solid rgba(255,255,255,0.5);
+    box-shadow: 2px 2px 5px 1px rgba(0,98,183,0.33);
+    max-width: 800px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background: rgba(0,136,255,0.45);
+    padding: 20px 15px!important;
+    height: auto !important;
 }
 
 .dice-container {
@@ -94,15 +150,20 @@ button:disabled {
 }
 
 .title{
-      text-align: center;
     font-family: 'Luckiest Guy', cursive;
-    font-size: 36px;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        text-size-adjust: 100%;
+    color: #fff;
+    visibility: visible;
+    text-align: center;
+    position: relative;
+    display: block;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 24px;
+    line-height: 1.2em;
+    text-shadow: -1px -1px 0 #08f,1px -1px 0 #08f,-1px 1px 0 #08f,3px 3px 0 #08f;
+    letter-spacing: .02em;
+    padding: 0;
 }
 .color-container{
       font-family: Arial, sans-serif;
@@ -127,20 +188,18 @@ button:disabled {
     line-height: normal;
 }
 .dice-select {
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 24px;
-    padding: 10px 20px;
-    border: 3px solid #0088ff;
-    border-radius: 6px;
-    background-color: white;
-    color: #0088ff;
-    text-transform: uppercase;
-    text-align: left;
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    width: 100%;
-    outline: none;
-    -webkit-text-stroke: none;
+    text-size-adjust: 100%;
+    visibility: visible;
+    display: inline-block;
+    border-radius: 0.25em;
+    border: 3px solid #08f;
+    font-size: 18px;
+    background: #fff!important;
+    font-family: "Luckiest Guy", sans-serif!important;
+    color: #08f!important;
+    padding: 5px 7px!important;
+    margin: 5px 5px 0 5px!important;
+    width: calc(50% - 10px);
 }
 
 
@@ -163,6 +222,22 @@ button:disabled {
     transform: translate(0px);
 }
 
+.die2 {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: black;
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    position: relative;
+    border: 9px solid #fff;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25), -4px -4px 10px rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    transition: background-color 0.2s ease-in-out;
+   background-color: var(--final-color); 
+    transform: translate(0px);
+}
+
 .dropdown-container {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -176,26 +251,57 @@ button:disabled {
 }
 
 button{
-      background: linear-gradient(to bottom, #ffeb3b, #ffc107);
-    color: white;
-    font-family: 'Luckiest Guy', cursive;
-    padding: 10px;
-    width:100%;
-    font-size: 28px;
-    text-transform: uppercase;
-    border: 3px solid white;
-    border-radius: 6px;
-    cursor: pointer;
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2), 0px -3px 6px rgba(255, 255, 255, 0.6);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    display: inline-block;
+    text-size-adjust: 100%;
+     font-family: 'Luckiest Guy', cursive;
+    line-height: 1.5em;
+    visibility: visible;
     text-align: center;
-    height: 50px;
-    -webkit-text-stroke: 0.2px #ca8a00;
-    font-weight: bold;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    -webkit-border-radius: 4px;
+    width: calc(100% - 10px);
+    box-sizing: border-box;
+    text-shadow: -1px -1px 0 #ca8a00,1px -1px 0 #ca8a00,-1px 1px 0 #ca8a00,2px 2px 0 #ca8a00;
+    letter-spacing: 0.02em;
+    background: rgb(255,215,0);
+    background-image: linear-gradient(to bottom,rgb(255,235,0) 0%, rgb(255,215,0) 51%, rgb(255,244,188) 100%);
+    background-size: auto 200%;
+    transition: 0.1s;
+    font-size: 20px!important;
+    padding: 6px 0!important;
+    margin-bottom: 10px!important;
+    border-top: 2px solid #fff;
+    border-right: 2px solid rgba(255,255,255,0.8);
+    border-bottom: 2px solid rgba(255,255,255,0.8);
+    border-left: 2px solid rgba(255,255,255,0.8);
+    padding-top: 12px!important;
+    padding-bottom: 12px!important;
+}
+#logo{
+      font-family: "Marvin", Arial, sans-serif;
+    text-align: center;
+    line-height: 1em!important;
+    font-size: 56px!important;
+    color: #fff;
+    filter: saturate(1.05) brightness(1.03);
+    height: 40px;
 }
 /* DOT IN THE CENTER */
 .die::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.die2::before {
   content: "";
   width: 12px;
   height: 12px;
@@ -320,4 +426,66 @@ button{
 .color-info span.purple {
     color: purple;
     background: none;
+}
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  animation: fadeInOut 2.5s ease-in-out; /* duration matches your JS timeout */
+}
+
+.loader.hide {
+  display: none;
+}
+
+.loader-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader-loader {
+  display: flex;
+  flex-direction: column; /* stack title above dice */
+  align-items: center;    /* center dice and title horizontally */
+  gap: 10px;              /* space between title and dice */
+}
+
+.dice-wrapper.size-100 {
+  width: 80px;
+  height: 80px;
+}
+
+.rounded-dice {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.loader-title{
+      text-size-adjust: 100%;
+    font-family: "Luckiest Guy", Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    cursor: default;
+    pointer-events: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 34px;
+    line-height: 1em!important;
+    text-shadow: -1px -1px 0 #08f,1px -1px 0 #08f,-1px 1px 0 #08f,3px 3px 0 #08f;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
 }
